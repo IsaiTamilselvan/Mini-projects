@@ -1,0 +1,16 @@
+package com.thamiz.todo;
+import java.util.*;
+
+public class Main{
+    static ArrayList<String> tasks = new ArrayList<>();
+
+    public static void main(String[] args) {
+        addTask();
+    }
+    public static void addTask(){
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter Task Name:");
+        tasks.add(scan.nextLine());
+        System.out.println("Task Added Successfully!");
+    }
+}
