@@ -1,16 +1,42 @@
 package com.thamiz.todo;
 import java.util.*;
 
-public class Main{
-    static ArrayList<String> tasks = new ArrayList<>();
+public class Main {
+
+    static ArrayList<Task> tasks = new ArrayList<>();
+
+    public static void addTask() {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Enter Task Name:");
+        String title = scan.nextLine();
+
+        // CREATE OBJECT
+        Task task = new Task(title);
+
+        // ADD OBJECT
+        tasks.add(task);
+
+        System.out.println("Task Added Successfully!");
+    }
+
+    public static void displayTasks() {
+
+        for (int i = 0; i < tasks.size(); i++) {
+
+            Task t = tasks.get(i);
+
+            System.out.println(
+                (i + 1) + ". " +
+                t.getTitle() +
+                " | Completed: " +
+                t.isCompleted()
+            );
+        }
+    }
 
     public static void main(String[] args) {
         addTask();
-    }
-    public static void addTask(){
-        Scanner scan=new Scanner(System.in);
-        System.out.println("Enter Task Name:");
-        tasks.add(scan.nextLine());
-        System.out.println("Task Added Successfully!");
+        displayTasks();
     }
 }
