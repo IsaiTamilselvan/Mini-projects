@@ -4,28 +4,19 @@ import java.util.*;
 public class Main {
 
     static ArrayList<Task> tasks = new ArrayList<>();
+    static Scanner scan = new Scanner(System.in);
 
     public static void addTask() {
-        Scanner scan = new Scanner(System.in);
-
         System.out.println("Enter Task Name:");
         String title = scan.nextLine();
-
-        // CREATE OBJECT
         Task task = new Task(title);
-
-        // ADD OBJECT
         tasks.add(task);
-
         System.out.println("Task Added Successfully!");
     }
 
     public static void displayTasks() {
-
         for (int i = 0; i < tasks.size(); i++) {
-
             Task t = tasks.get(i);
-
             System.out.println(
                 (i + 1) + ". " +
                 t.getTitle() +
@@ -34,9 +25,45 @@ public class Main {
             );
         }
     }
+    public static void marker(){
+        System.out.println("Enter the task numer:");
+        int index=scan.nextInt();
+        Task t = tasks.get(index-1);
+
+        t.markCompleted();
+
+    }
+    public static void mainMenu(){
+        boolean run=true;
+        while(run){
+            System.out.println("-------TO-DO-APP------");
+            System.out.println("1.Add task");
+            System.out.println("2.View tasks");
+            System.out.println("3.Mark complete");
+            System.out.println("4.Exit");
+
+            int ch=scan.nextInt();
+            scan.nextLine();
+            switch(ch){
+                case 1:
+                    addTask();
+                    break;
+                case 2:
+                    displayTasks();
+                    break;
+                case 3:
+                    marker();
+                    break;
+                case 4:
+                    run=false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        addTask();
-        displayTasks();
+        mainMenu();
     }
 }
