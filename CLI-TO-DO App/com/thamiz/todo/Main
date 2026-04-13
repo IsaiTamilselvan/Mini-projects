@@ -28,9 +28,13 @@ public class Main {
     public static void marker(){
         System.out.println("Enter the task numer:");
         int index=scan.nextInt();
-        Task t = tasks.get(index-1);
-
-        t.markCompleted();
+        if(index < tasks.size() && index >= 0){
+            Task t = tasks.get(index-1);
+            t.markCompleted();
+        }else{
+            System.out.println("Invalid index");
+        }
+        
 
     }
     public static void mainMenu(){
